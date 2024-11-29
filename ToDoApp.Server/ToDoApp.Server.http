@@ -1,0 +1,6 @@
+@ToDoApp.Server_HostAddress = http://localhost:5277
+
+GET {{ToDoApp.Server_HostAddress}}/login/
+Accept: application/json
+
+###
