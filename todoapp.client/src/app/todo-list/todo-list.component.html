@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+  <span>Todo List</span>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="filter-buttons">
+        <button mat-button
+                [color]="filterStatus === 'All' ? 'primary' : ''"
+                (click)="filterStatus = 'All'; applyFilter()">
+          All
+        </button>
+        <button mat-button
+                [color]="filterStatus === 'Pending' ? 'primary' : ''"
+                (click)="filterStatus = 'Pending'; applyFilter()">
+          Pending
+        </button>
+        <button mat-button
+                [color]="filterStatus === 'Completed' ? 'primary' : ''"
+                (click)="filterStatus = 'Completed'; applyFilter()">
+          Completed
+        </button>
+      </div>
+
+      <button mat-raised-button color="accent" (click)="addTask()">
+        Add Task
+      </button>
+
+      <mat-list>
+        <mat-list-item *ngFor="let task of filteredTasks">
+          <mat-checkbox [checked]="task.status === 'Completed'"
+                        (change)="toggleTaskStatus(task)"></mat-checkbox>
+          <div class="task-details">
+            <h3 matLine>{{ task.title }}</h3>
+          </div>
+          <button mat-icon-button (click)="editTask(task)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteTask(task)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

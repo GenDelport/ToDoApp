@@ -1,0 +1,21 @@
+/* task-dialog.component.css */
+
+/* Center the form elements */
+mat-form-field {
+  width: 100%;
+}
+
+/* Style the dialog content */
+.mat-dialog-content {
+  overflow: hidden;
+}
+
+/* Style the dialog actions */
+.mat-dialog-actions {
+  margin-top: 20px;
+}
+
+/* Adjust the buttons */
+button {
+  min-width: 80px;
+}
