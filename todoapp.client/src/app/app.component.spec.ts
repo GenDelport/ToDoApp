@@ -6,7 +6,6 @@ describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let httpMock: HttpTestingController;
-  //removed depricated HttpClientTestingModule  in imports to provideHttpClientTesting()
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -34,20 +33,10 @@ describe('AppComponent', () => {
       { date: '2021-10-02', temperatureC: 25, temperatureF: 77, summary: 'Warm' }
     ];
 
-    //const mockToDoTasks = [
-    //  { id: 1, title: 'test', status: "NotStarted", description: "TEst", member: 'Cloete' },
-    //  { id: 2, title: 'test1', status: "InProgress", description: "sdawda", member: 'Cloete2' }
-    //];
     component.ngOnInit();
 
     const req2 = httpMock.expectOne('/tasks')
-    //const req = httpMock.expectOne('/weatherforecast');
     expect(req2.request.method).toEqual('GET');
-    //req2.flush(mockToDoTasks);
-    //expect(req.request.method).toEqual('GET');
-    //req.flush(mockForecasts);
-
     expect(component.forecasts).toEqual(mockForecasts);
-    //expect(component.tasks).toEqual(mockToDoTasks);
   });
 });

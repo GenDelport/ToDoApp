@@ -3,6 +3,19 @@
   margin: 0 auto;
   padding: 16px;
 }
+.add-task-wrapper {
+  text-align: left; /* Align content to the left */
+  margin-bottom: 16px; /* Add some spacing below the button */
+}
+
+.add-task-button {
+  display: inline-block; /* Ensure the button doesn't take up full width */
+}
+.form-card {
+  max-width: 80vw;
+  margin: 0 auto;
+  padding: 16px;
+}
 
 .add-task-form {
   display: flex;
@@ -24,45 +37,3 @@
 .task-checkbox {
   margin-right: 16px;
 }
-
-
-
-
-
-
-
-
-/*.container {
-  max-width: 800px;
-  margin: 20px auto;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.filter-buttons {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.task-details {
-  flex: 1;
-  margin-left: 10px;
-}
-
-mat-list-item {
-  display: flex;
-  align-items: center;
-}
-
-  mat-list-item.completed h3 {
-    text-decoration: line-through;
-    color: gray;
-  }
-
-  mat-list-item mat-checkbox {
-    margin-right: 10px;
-  }
-*/

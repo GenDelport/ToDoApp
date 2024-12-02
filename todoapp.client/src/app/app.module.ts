@@ -13,7 +13,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
-import { TaskDialogComponent } from './task-dialog/task-dialog.component'; // Import TaskDialogComponent
+import { TaskDialogComponent } from './task-dialog/task-dialog.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../services/jwt.interceptor';
 
@@ -28,21 +28,20 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
-import {MatTableModule } from '@angular/material/table';
-//Removed HttpClientModule  from imports as it is depricated
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
     TodoListComponent,
-    TaskDialogComponent, // Add TaskDialogComponent here
+    TaskDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule, // Ensure ReactiveFormsModule is imported
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     // Angular Material Modules
     MatTableModule,
