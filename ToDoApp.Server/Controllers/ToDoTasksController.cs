@@ -20,6 +20,15 @@ namespace ToDoApp.Server.Controllers
         {
             try
             {
+                if (Request.Headers.ContainsKey("Authorization"))
+                {
+                    var authHeader = Request.Headers["Authorization"].ToString();
+                    _logger.LogInformation("Authorization Header: {AuthHeader}", authHeader);
+                }
+                else
+                {
+                    _logger.LogWarning("Authorization header is missing.");
+                }
                 _logger.LogInformation("Attempting to retrieve ToDo tasks.");
                 var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
@@ -43,7 +52,7 @@ namespace ToDoApp.Server.Controllers
             var task = new ToDoTask
             {
                 Title = taskDto.Title,
-                Status = Models.TaskStatus.Pending,
+                Status = taskDto.Status,
                 Created = DateTime.UtcNow,
                 MemberId = userId
             };
@@ -63,9 +72,9 @@ namespace ToDoApp.Server.Controllers
             {
                 return NotFound();
             }
-
-            task.Title = taskDto.Title;
+            
             task.Status = taskDto.Status;
+            task.Title = taskDto.Title;
 
             _context.ToDoTasks.Update(task);
             await _context.SaveChangesAsync();

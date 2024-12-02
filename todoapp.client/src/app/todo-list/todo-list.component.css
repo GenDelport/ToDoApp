@@ -1,4 +1,38 @@
 .container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.add-task-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.new-task-field {
+  flex: 1;
+  margin-right: 8px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-checkbox {
+  margin-right: 16px;
+}
+
+
+
+
+
+
+
+
+/*.container {
   max-width: 800px;
   margin: 20px auto;
 }
@@ -31,3 +65,4 @@ mat-list-item {
   mat-list-item mat-checkbox {
     margin-right: 10px;
   }
+*/

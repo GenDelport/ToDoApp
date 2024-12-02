@@ -15,25 +15,29 @@ export class TaskDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<TaskDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Partial<Task>
+    @Inject(MAT_DIALOG_DATA) public data: Task
   ) {
     this.taskForm = new FormGroup({
-      title: new FormControl(data.title || '', [Validators.required]),
-      status: new FormControl(data.status || 'Pending'),
+      title: new FormControl(data.title, [Validators.required]),
     });
-  }
-
-  get titleControl(): FormControl {
-    return this.taskForm.get('title') as FormControl;
   }
 
   onCancel(): void {
     this.dialogRef.close();
   }
-
-  onSave() {
+  onSave(): void {
     if (this.taskForm.valid) {
       this.dialogRef.close(this.taskForm.value);
     }
   }
+  //onSave(): void {
+  //  if (this.taskForm.valid) {
+  //    const taskData = {
+  //      title: this.taskForm.value.title,
+  //      status: 'Pending' // Hardcoded status
+  //    };
+  //    this.dialogRef.close(taskData);
+  //    console.log('TaskDialogComponent: Saving task', taskData); // Debugging
+  //  }
+  //}
 }
