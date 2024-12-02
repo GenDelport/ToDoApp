@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+// HTTP and Interceptors
+import { AuthService } from '../services/auth.service';
 // Other imports...
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,6 +27,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import {MatTableModule } from '@angular/material/table';
 //Removed HttpClientModule  from imports as it is depricated
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { MatIconModule } from '@angular/material/icon';
     ReactiveFormsModule, // Ensure ReactiveFormsModule is imported
     BrowserAnimationsModule,
     // Angular Material Modules
+    MatTableModule,
+    MatSelectModule,
     MatCheckboxModule,
     MatIconModule,
     MatListModule,
@@ -53,6 +58,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
   ],
   providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
     provideAnimationsAsync(), provideHttpClient(),
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],

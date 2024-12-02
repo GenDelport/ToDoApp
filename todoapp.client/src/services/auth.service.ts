@@ -25,11 +25,13 @@ export class AuthService {
       );
   }
   getToken(): string | null {
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    console.log('Retrieved token from AuthService:', token); // Debugging
+    return token;
   }
-  //isLoggedIn(): boolean {
-  //  return !!localStorage.getItem('token');
-  //}
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
   //if you want a logout method
   logout(): void {
     localStorage.removeItem('token');

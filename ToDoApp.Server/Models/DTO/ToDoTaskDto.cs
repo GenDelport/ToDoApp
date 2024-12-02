@@ -3,6 +3,6 @@
     public class ToDoTaskDto
     {
         public string? Title { get; set; }
-        public TaskStatus Status { get; set; }
+        public string? Status { get; set; }
     }
 }
