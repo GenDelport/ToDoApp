@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'todo-list', component: TodoListComponent, canActivate: [AuthGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' } // Default route
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({

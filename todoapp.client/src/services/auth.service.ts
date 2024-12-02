@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://localhost:7253/api/auth'; // Adjust to match your backend routes
+  private baseUrl = 'https://localhost:7253/api/auth';
 
   constructor(private http: HttpClient) { }
 
@@ -20,17 +20,18 @@ export class AuthService {
       .pipe(
         tap(({ token }) => {
           localStorage.setItem('token', token);
-          console.log('User logged in with token:', token); // For debugging
+          console.log('User logged in with token:', token);
         })
       );
   }
   getToken(): string | null {
-    return localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    console.log('Retrieved token from AuthService:', token);
+    return token;
   }
-  //isLoggedIn(): boolean {
-  //  return !!localStorage.getItem('token');
-  //}
-  //if you want a logout method
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
   logout(): void {
     localStorage.removeItem('token');
   }
