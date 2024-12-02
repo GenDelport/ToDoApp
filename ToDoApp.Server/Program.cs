@@ -4,11 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Security.Claims;
-using ToDoApp.Server.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
-using ToDoApp.Server.Models.Classes;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 var environment = builder.Environment.EnvironmentName;
@@ -77,8 +73,6 @@ builder.Configuration
     .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
     .AddEnvironmentVariables();
 
-//builder.Services.AddDbContext<AppDbContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -91,15 +85,7 @@ options.UseSqlServer(
                     );
                 })
         );
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp",

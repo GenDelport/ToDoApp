@@ -30,14 +30,4 @@ export class TaskDialogComponent {
       this.dialogRef.close(this.taskForm.value);
     }
   }
-  //onSave(): void {
-  //  if (this.taskForm.valid) {
-  //    const taskData = {
-  //      title: this.taskForm.value.title,
-  //      status: 'Pending' // Hardcoded status
-  //    };
-  //    this.dialogRef.close(taskData);
-  //    console.log('TaskDialogComponent: Saving task', taskData); // Debugging
-  //  }
-  //}
 }
